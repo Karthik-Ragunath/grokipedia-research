@@ -1,0 +1,7 @@
+pyenv activate deepseek-moe
+
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai && python latex_section_extractor.py --file ../deepseek-moe-explainer/deepseek-moe-paper/main.tex --sections "Introduction,Preliminaries: Mixture-of-Experts for Transformers,DeepSeekMoE Architecture" --output-dir ../deepseek-moe-explainer/extracted_sections
+
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai && python semantic_chunker.py --input ../deepseek-moe-explainer/extracted_sections/preliminaries_mixture-of-experts_for_transformers.md --output-dir ../deepseek-moe-explainer/chunks
+
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai && python semantic_chunker.py --input-dir ../deepseek-moe-explainer/extracted_sections --output-dir ../deepseek-moe-explainer/chunks
