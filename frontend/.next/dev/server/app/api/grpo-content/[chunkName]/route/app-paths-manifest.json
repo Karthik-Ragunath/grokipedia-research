@@ -1,0 +1,3 @@
+{
+  "/api/grpo-content/[chunkName]/route": "app/api/grpo-content/[chunkName]/route.js"
+}

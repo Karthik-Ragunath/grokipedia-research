@@ -1,0 +1,3 @@
+{
+  "/api/grpo-video/[...path]/route": "app/api/grpo-video/[...path]/route.js"
+}

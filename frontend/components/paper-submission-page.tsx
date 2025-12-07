@@ -14,7 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { Upload, Link, FileText, Play, Loader2 } from "lucide-react"
+import { Upload, Link, FileText, Play, Loader2, Github } from "lucide-react"
 import { InlineMath, BlockMath } from 'react-katex'
 import 'katex/dist/katex.min.css'
 
@@ -30,12 +30,14 @@ interface VideoItem {
 
 export function PaperSubmissionPage() {
   const [arxivUrl, setArxivUrl] = useState("")
+  const [githubUrl, setGithubUrl] = useState("")
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [videos, setVideos] = useState<VideoItem[]>([])
   const [faqs, setFaqs] = useState<VideoItem[]>([])
   const [isLoadingVideos, setIsLoadingVideos] = useState(false)
   const [urlError, setUrlError] = useState("")
+  const [githubUrlError, setGithubUrlError] = useState("")
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +45,32 @@ export function PaperSubmissionPage() {
     if (file && file.type === "application/pdf") {
       setSelectedFile(file)
       setArxivUrl("")
+      setGithubUrl("")
     }
+  }
+
+  const validateGithubUrl = (url: string): boolean => {
+    if (!url.trim()) return true // Empty is valid (not required)
+    try {
+      const urlObj = new URL(url)
+      // Check if it's a github.com URL
+      return urlObj.hostname === 'github.com' || urlObj.hostname === 'www.github.com'
+    } catch {
+      return false
+    }
+  }
+
+  const handleGithubUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setGithubUrl(value)
+    
+    // Validate URL
+    if (value.trim() && !validateGithubUrl(value)) {
+      setGithubUrlError("Please enter a valid GitHub URL (e.g., https://github.com/...)")
+    } else {
+      setGithubUrlError("")
+    }
+    // Note: We don't clear other inputs when GitHub URL is entered
   }
 
   const validateUrl = (url: string): boolean => {
@@ -77,11 +104,16 @@ export function PaperSubmissionPage() {
   }
 
   const handleSubmit = async () => {
-    if (!arxivUrl && !selectedFile) return
+    if (!arxivUrl && !githubUrl && !selectedFile) return
     
-    // Validate URL if provided
+    // Validate URLs if provided
     if (arxivUrl.trim() && !validateUrl(arxivUrl)) {
       setUrlError("Please enter a valid ArXiv URL (e.g., https://arxiv.org/abs/...)")
+      return
+    }
+    
+    if (githubUrl.trim() && !validateGithubUrl(githubUrl)) {
+      setGithubUrlError("Please enter a valid GitHub URL (e.g., https://github.com/...)")
       return
     }
 
@@ -118,6 +150,15 @@ export function PaperSubmissionPage() {
       // Check for keywords (fallback)
       isGrpo = isGrpoPaper || urlLower.includes('grpo')
       isDeepseek = isDeepseekPaper || urlLower.includes('deepseek')
+    } else if (githubUrl.trim()) {
+      // Check GitHub URL for keywords
+      const urlLower = githubUrl.toLowerCase()
+      
+      if (urlLower.includes('grpo')) {
+        isGrpo = true
+      } else if (urlLower.includes('deepseek')) {
+        isDeepseek = true
+      }
     }
     
     // Load videos and FAQs after delay
@@ -190,7 +231,7 @@ export function PaperSubmissionPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              {/* URL Input */}
+              {/* ArXiv URL Input */}
               <div className="space-y-2">
                 <Label htmlFor="arxiv-url" className="flex items-center gap-2">
                   <Link className="h-4 w-4" />
@@ -207,6 +248,26 @@ export function PaperSubmissionPage() {
                 />
                 {urlError && (
                   <p className="text-sm text-destructive">{urlError}</p>
+                )}
+              </div>
+
+              {/* GitHub URL Input */}
+              <div className="space-y-2">
+                <Label htmlFor="github-url" className="flex items-center gap-2">
+                  <Github className="h-4 w-4" />
+                  GitHub URL
+                </Label>
+                <Input
+                  id="github-url"
+                  type="url"
+                  placeholder="https://github.com/..."
+                  value={githubUrl}
+                  onChange={handleGithubUrlChange}
+                  disabled={isSubmitting}
+                  className={githubUrlError ? "border-destructive" : ""}
+                />
+                {githubUrlError && (
+                  <p className="text-sm text-destructive">{githubUrlError}</p>
                 )}
               </div>
 
@@ -259,7 +320,7 @@ export function PaperSubmissionPage() {
                 className="w-full"
                 size="lg"
                 onClick={handleSubmit}
-                disabled={(!arxivUrl && !selectedFile) || isSubmitting}
+                disabled={(!arxivUrl && !githubUrl && !selectedFile) || isSubmitting}
               >
                 {isSubmitting ? (
                   <>

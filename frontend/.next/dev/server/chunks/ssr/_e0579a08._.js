@@ -385,6 +385,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file-text.js [app-ssr] (ecmascript) <export default as FileText>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$play$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Play$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/play.js [app-ssr] (ecmascript) <export default as Play>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/loader-circle.js [app-ssr] (ecmascript) <export default as Loader2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$github$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Github$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/github.js [app-ssr] (ecmascript) <export default as Github>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$katex$2f$dist$2f$react$2d$katex$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-katex/dist/react-katex.js [app-ssr] (ecmascript)");
 "use client";
 ;
@@ -399,19 +400,44 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$kat
 ;
 function PaperSubmissionPage() {
     const [arxivUrl, setArxivUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [githubUrl, setGithubUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [selectedFile, setSelectedFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [videos, setVideos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [faqs, setFaqs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isLoadingVideos, setIsLoadingVideos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [urlError, setUrlError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [githubUrlError, setGithubUrlError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const fileInputRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const handleFileChange = (e)=>{
         const file = e.target.files?.[0];
         if (file && file.type === "application/pdf") {
             setSelectedFile(file);
             setArxivUrl("");
+            setGithubUrl("");
         }
+    };
+    const validateGithubUrl = (url)=>{
+        if (!url.trim()) return true // Empty is valid (not required)
+        ;
+        try {
+            const urlObj = new URL(url);
+            // Check if it's a github.com URL
+            return urlObj.hostname === 'github.com' || urlObj.hostname === 'www.github.com';
+        } catch  {
+            return false;
+        }
+    };
+    const handleGithubUrlChange = (e)=>{
+        const value = e.target.value;
+        setGithubUrl(value);
+        // Validate URL
+        if (value.trim() && !validateGithubUrl(value)) {
+            setGithubUrlError("Please enter a valid GitHub URL (e.g., https://github.com/...)");
+        } else {
+            setGithubUrlError("");
+        }
+    // Note: We don't clear other inputs when GitHub URL is entered
     };
     const validateUrl = (url)=>{
         if (!url.trim()) return true // Empty is valid (not required if file is selected)
@@ -441,23 +467,100 @@ function PaperSubmissionPage() {
         }
     };
     const handleSubmit = async ()=>{
-        if (!arxivUrl && !selectedFile) return;
-        // Validate URL if provided
+        if (!arxivUrl && !githubUrl && !selectedFile) return;
+        // Validate URLs if provided
         if (arxivUrl.trim() && !validateUrl(arxivUrl)) {
             setUrlError("Please enter a valid ArXiv URL (e.g., https://arxiv.org/abs/...)");
+            return;
+        }
+        if (githubUrl.trim() && !validateGithubUrl(githubUrl)) {
+            setGithubUrlError("Please enter a valid GitHub URL (e.g., https://github.com/...)");
             return;
         }
         setIsSubmitting(true);
         setIsLoadingVideos(true);
         setVideos([]);
         setFaqs([]);
-        // Load videos after submission
+        // Wait 2 seconds before loading content (with animation)
+        await new Promise((resolve)=>setTimeout(resolve, 2000));
+        // Determine which videos to load
+        let isGrpo = false;
+        let isDeepseek = false;
+        if (selectedFile) {
+            // Check filename for keywords (PDF parsing removed for now)
+            const fileName = (selectedFile.name || '').toLowerCase();
+            if (fileName.includes('grpo')) {
+                isGrpo = true;
+            } else if (fileName.includes('deepseek')) {
+                isDeepseek = true;
+            }
+        } else if (arxivUrl.trim()) {
+            // Check URL for specific ArXiv IDs or keywords
+            const urlLower = arxivUrl.toLowerCase();
+            const urlTrimmed = arxivUrl.trim();
+            // Check for specific ArXiv paper IDs
+            const isGrpoPaper = urlTrimmed.includes('2402.03300') || urlTrimmed === 'https://arxiv.org/pdf/2402.03300';
+            const isDeepseekPaper = urlTrimmed.includes('2401.06066') || urlTrimmed === 'https://arxiv.org/pdf/2401.06066';
+            // Check for keywords (fallback)
+            isGrpo = isGrpoPaper || urlLower.includes('grpo');
+            isDeepseek = isDeepseekPaper || urlLower.includes('deepseek');
+        } else if (githubUrl.trim()) {
+            // Check GitHub URL for keywords
+            const urlLower = githubUrl.toLowerCase();
+            if (urlLower.includes('grpo')) {
+                isGrpo = true;
+            } else if (urlLower.includes('deepseek')) {
+                isDeepseek = true;
+            }
+        }
+        // Load videos and FAQs after delay
         try {
-            const response = await fetch('/api/videos');
-            if (response.ok) {
-                const data = await response.json();
-                setVideos(data.videos || []);
-                setFaqs(data.videos || []);
+            if (isGrpo) {
+                // Load GRPO videos
+                const videosResponse = await fetch('/api/grpo-videos');
+                if (videosResponse.ok) {
+                    const videosData = await videosResponse.json();
+                    setVideos(videosData.videos || []);
+                }
+                // No FAQs for GRPO yet
+                setFaqs([]);
+            } else if (isDeepseek) {
+                // Load DeepSeek videos (default behavior)
+                const videosResponse = await fetch('/api/videos');
+                if (videosResponse.ok) {
+                    const videosData = await videosResponse.json();
+                    setVideos(videosData.videos || []);
+                }
+                // Load FAQ (single item)
+                const faqItem = {
+                    id: 'faq_1',
+                    title: 'DeepSeek MoE Transformer: Forward Pass and Context Mechanics',
+                    description: 'Comprehensive exploration of DeepSeek\'s Mixture of Experts transformer implementation, focusing on forward pass architecture, context handling mechanisms, and mathematical foundations.',
+                    videoPath: '/api/faq-video',
+                    chunkNumber: 0,
+                    header: 'faq_combined_video'
+                };
+                setFaqs([
+                    faqItem
+                ]);
+            } else {
+                // Default to DeepSeek if no keyword detected
+                const videosResponse = await fetch('/api/videos');
+                if (videosResponse.ok) {
+                    const videosData = await videosResponse.json();
+                    setVideos(videosData.videos || []);
+                }
+                const faqItem = {
+                    id: 'faq_1',
+                    title: 'DeepSeek MoE Transformer: Forward Pass and Context Mechanics',
+                    description: 'Comprehensive exploration of DeepSeek\'s Mixture of Experts transformer implementation, focusing on forward pass architecture, context handling mechanisms, and mathematical foundations.',
+                    videoPath: '/api/faq-video',
+                    chunkNumber: 0,
+                    header: 'faq_combined_video'
+                };
+                setFaqs([
+                    faqItem
+                ]);
             }
         } catch (error) {
             console.error('Error loading videos:', error);
@@ -476,7 +579,7 @@ function PaperSubmissionPage() {
                     children: "Paper to Video Generator"
                 }, void 0, false, {
                     fileName: "[project]/components/paper-submission-page.tsx",
-                    lineNumber: 111,
+                    lineNumber: 222,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -493,19 +596,19 @@ function PaperSubmissionPage() {
                                                 className: "h-5 w-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                lineNumber: 118,
+                                                lineNumber: 229,
                                                 columnNumber: 17
                                             }, this),
                                             "Submit Paper"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                        lineNumber: 117,
+                                        lineNumber: 228,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 227,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -522,14 +625,14 @@ function PaperSubmissionPage() {
                                                             className: "h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                                            lineNumber: 126,
+                                                            lineNumber: 237,
                                                             columnNumber: 19
                                                         }, this),
                                                         "ArXiv URL"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 125,
+                                                    lineNumber: 236,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -542,7 +645,7 @@ function PaperSubmissionPage() {
                                                     className: urlError ? "border-destructive" : ""
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 129,
+                                                    lineNumber: 240,
                                                     columnNumber: 17
                                                 }, this),
                                                 urlError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -550,13 +653,61 @@ function PaperSubmissionPage() {
                                                     children: urlError
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 139,
+                                                    lineNumber: 250,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 124,
+                                            lineNumber: 235,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "space-y-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Label"], {
+                                                    htmlFor: "github-url",
+                                                    className: "flex items-center gap-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$github$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Github$3e$__["Github"], {
+                                                            className: "h-4 w-4"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/components/paper-submission-page.tsx",
+                                                            lineNumber: 257,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        "GitHub URL"
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/components/paper-submission-page.tsx",
+                                                    lineNumber: 256,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
+                                                    id: "github-url",
+                                                    type: "url",
+                                                    placeholder: "https://github.com/...",
+                                                    value: githubUrl,
+                                                    onChange: handleGithubUrlChange,
+                                                    disabled: isSubmitting,
+                                                    className: githubUrlError ? "border-destructive" : ""
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/paper-submission-page.tsx",
+                                                    lineNumber: 260,
+                                                    columnNumber: 17
+                                                }, this),
+                                                githubUrlError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm text-destructive",
+                                                    children: githubUrlError
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/paper-submission-page.tsx",
+                                                    lineNumber: 270,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/components/paper-submission-page.tsx",
+                                            lineNumber: 255,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -568,12 +719,12 @@ function PaperSubmissionPage() {
                                                         className: "w-full border-t"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 145,
+                                                        lineNumber: 276,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 144,
+                                                    lineNumber: 275,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -583,18 +734,18 @@ function PaperSubmissionPage() {
                                                         children: "Or"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 148,
+                                                        lineNumber: 279,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 147,
+                                                    lineNumber: 278,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 143,
+                                            lineNumber: 274,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -608,14 +759,14 @@ function PaperSubmissionPage() {
                                                             className: "h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                                            lineNumber: 155,
+                                                            lineNumber: 286,
                                                             columnNumber: 19
                                                         }, this),
                                                         "Upload PDF"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 154,
+                                                    lineNumber: 285,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -632,7 +783,7 @@ function PaperSubmissionPage() {
                                                             disabled: isSubmitting
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                                            lineNumber: 162,
+                                                            lineNumber: 293,
                                                             columnNumber: 19
                                                         }, this),
                                                         selectedFile ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -642,7 +793,7 @@ function PaperSubmissionPage() {
                                                                     className: "h-10 w-10 text-primary"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                                    lineNumber: 173,
+                                                                    lineNumber: 304,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -650,7 +801,7 @@ function PaperSubmissionPage() {
                                                                     children: selectedFile.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                                    lineNumber: 174,
+                                                                    lineNumber: 305,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -661,13 +812,13 @@ function PaperSubmissionPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                                    lineNumber: 175,
+                                                                    lineNumber: 306,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                                            lineNumber: 172,
+                                                            lineNumber: 303,
                                                             columnNumber: 21
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "flex flex-col items-center gap-2",
@@ -676,7 +827,7 @@ function PaperSubmissionPage() {
                                                                     className: "h-10 w-10 text-muted-foreground"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                                    lineNumber: 179,
+                                                                    lineNumber: 310,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -684,7 +835,7 @@ function PaperSubmissionPage() {
                                                                     children: "Click to upload or drag and drop"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                                    lineNumber: 180,
+                                                                    lineNumber: 311,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -692,39 +843,39 @@ function PaperSubmissionPage() {
                                                                     children: "PDF files only"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                                    lineNumber: 181,
+                                                                    lineNumber: 312,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                                            lineNumber: 178,
+                                                            lineNumber: 309,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 158,
+                                                    lineNumber: 289,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 153,
+                                            lineNumber: 284,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                             className: "w-full",
                                             size: "lg",
                                             onClick: handleSubmit,
-                                            disabled: !arxivUrl && !selectedFile || isSubmitting,
+                                            disabled: !arxivUrl && !githubUrl && !selectedFile || isSubmitting,
                                             children: isSubmitting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
                                                         className: "mr-2 h-4 w-4 animate-spin"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 196,
+                                                        lineNumber: 327,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Processing Paper..."
@@ -732,19 +883,19 @@ function PaperSubmissionPage() {
                                             }, void 0, true) : "Submit Paper"
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 188,
+                                            lineNumber: 319,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 233,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 115,
+                            lineNumber: 226,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -762,7 +913,7 @@ function PaperSubmissionPage() {
                                                         className: "h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 212,
+                                                        lineNumber: 343,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Videos",
@@ -771,89 +922,145 @@ function PaperSubmissionPage() {
                                                         children: videos.length
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 215,
+                                                        lineNumber: 346,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                lineNumber: 211,
+                                                lineNumber: 342,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 210,
+                                            lineNumber: 341,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-80 overflow-y-auto pr-2",
-                                                children: isLoadingVideos ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: isLoadingVideos || isSubmitting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex h-full items-center justify-center text-muted-foreground",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "flex flex-col items-center gap-2",
+                                                        className: "flex flex-col items-center gap-4",
                                                         children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
-                                                                className: "h-8 w-8 animate-spin"
-                                                            }, void 0, false, {
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "relative",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
+                                                                        className: "h-12 w-12 animate-spin text-primary"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 358,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "absolute inset-0 flex items-center justify-center",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "h-8 w-8 rounded-full border-2 border-primary border-t-transparent animate-spin"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/components/paper-submission-page.tsx",
+                                                                            lineNumber: 360,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 359,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 226,
+                                                                lineNumber: 357,
                                                                 columnNumber: 25
                                                             }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-center text-sm",
-                                                                children: "Loading videos..."
-                                                            }, void 0, false, {
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "text-center space-y-1",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                        className: "text-sm font-medium",
+                                                                        children: "Processing your paper..."
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 364,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                        className: "text-xs text-muted-foreground",
+                                                                        children: "Generating videos and content"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 365,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 227,
+                                                                lineNumber: 363,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex gap-1",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "h-2 w-2 rounded-full bg-primary animate-bounce",
+                                                                        style: {
+                                                                            animationDelay: '0ms'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 368,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "h-2 w-2 rounded-full bg-primary animate-bounce",
+                                                                        style: {
+                                                                            animationDelay: '150ms'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 369,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "h-2 w-2 rounded-full bg-primary animate-bounce",
+                                                                        style: {
+                                                                            animationDelay: '300ms'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 370,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/components/paper-submission-page.tsx",
+                                                                lineNumber: 367,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 225,
+                                                        lineNumber: 356,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 224,
+                                                    lineNumber: 355,
                                                     columnNumber: 21
                                                 }, this) : videos.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex h-full items-center justify-center text-muted-foreground",
-                                                    children: isSubmitting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "flex flex-col items-center gap-2",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
-                                                                className: "h-8 w-8 animate-spin"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 234,
-                                                                columnNumber: 27
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-center text-sm",
-                                                                children: "Generating videos..."
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 235,
-                                                                columnNumber: 27
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 233,
-                                                        columnNumber: 25
-                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "text-center text-sm",
                                                         children: "No videos available"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 238,
-                                                        columnNumber: 25
+                                                        lineNumber: 376,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 231,
+                                                    lineNumber: 375,
                                                     columnNumber: 21
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "space-y-4",
@@ -861,28 +1068,28 @@ function PaperSubmissionPage() {
                                                             video: video
                                                         }, video.id, false, {
                                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                                            lineNumber: 244,
+                                                            lineNumber: 381,
                                                             columnNumber: 25
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 242,
+                                                    lineNumber: 379,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 353,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 221,
+                                            lineNumber: 352,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 209,
+                                    lineNumber: 340,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -897,7 +1104,7 @@ function PaperSubmissionPage() {
                                                         className: "h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 256,
+                                                        lineNumber: 393,
                                                         columnNumber: 19
                                                     }, this),
                                                     "FAQs",
@@ -906,89 +1113,145 @@ function PaperSubmissionPage() {
                                                         children: faqs.length
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 259,
+                                                        lineNumber: 396,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 392,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 254,
+                                            lineNumber: 391,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-80 overflow-y-auto pr-2",
-                                                children: isLoadingVideos ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: isLoadingVideos || isSubmitting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex h-full items-center justify-center text-muted-foreground",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "flex flex-col items-center gap-2",
+                                                        className: "flex flex-col items-center gap-4",
                                                         children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
-                                                                className: "h-8 w-8 animate-spin"
-                                                            }, void 0, false, {
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "relative",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
+                                                                        className: "h-12 w-12 animate-spin text-primary"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 408,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "absolute inset-0 flex items-center justify-center",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "h-8 w-8 rounded-full border-2 border-primary border-t-transparent animate-spin"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/components/paper-submission-page.tsx",
+                                                                            lineNumber: 410,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 409,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 270,
+                                                                lineNumber: 407,
                                                                 columnNumber: 25
                                                             }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-center text-sm",
-                                                                children: "Loading videos..."
-                                                            }, void 0, false, {
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "text-center space-y-1",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                        className: "text-sm font-medium",
+                                                                        children: "Processing your paper..."
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 414,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                        className: "text-xs text-muted-foreground",
+                                                                        children: "Generating FAQ content"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 415,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
                                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 271,
+                                                                lineNumber: 413,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex gap-1",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "h-2 w-2 rounded-full bg-primary animate-bounce",
+                                                                        style: {
+                                                                            animationDelay: '0ms'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 418,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "h-2 w-2 rounded-full bg-primary animate-bounce",
+                                                                        style: {
+                                                                            animationDelay: '150ms'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 419,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "h-2 w-2 rounded-full bg-primary animate-bounce",
+                                                                        style: {
+                                                                            animationDelay: '300ms'
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/components/paper-submission-page.tsx",
+                                                                        lineNumber: 420,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/components/paper-submission-page.tsx",
+                                                                lineNumber: 417,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 269,
+                                                        lineNumber: 406,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 268,
+                                                    lineNumber: 405,
                                                     columnNumber: 21
                                                 }, this) : faqs.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex h-full items-center justify-center text-muted-foreground",
-                                                    children: isSubmitting ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "flex flex-col items-center gap-2",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
-                                                                className: "h-8 w-8 animate-spin"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 278,
-                                                                columnNumber: 27
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-center text-sm",
-                                                                children: "Generating FAQ videos..."
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/components/paper-submission-page.tsx",
-                                                                lineNumber: 279,
-                                                                columnNumber: 27
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 277,
-                                                        columnNumber: 25
-                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "text-center text-sm",
                                                         children: "No FAQ videos available"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                                        lineNumber: 282,
-                                                        columnNumber: 25
+                                                        lineNumber: 426,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 275,
+                                                    lineNumber: 425,
                                                     columnNumber: 21
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "space-y-4",
@@ -996,51 +1259,51 @@ function PaperSubmissionPage() {
                                                             video: faq
                                                         }, faq.id, false, {
                                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                                            lineNumber: 288,
+                                                            lineNumber: 431,
                                                             columnNumber: 25
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 286,
+                                                    lineNumber: 429,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                lineNumber: 266,
+                                                lineNumber: 403,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 265,
+                                            lineNumber: 402,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 253,
+                                    lineNumber: 390,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 207,
+                            lineNumber: 338,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/paper-submission-page.tsx",
-                    lineNumber: 113,
+                    lineNumber: 224,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/paper-submission-page.tsx",
-            lineNumber: 110,
+            lineNumber: 221,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/paper-submission-page.tsx",
-        lineNumber: 109,
+        lineNumber: 220,
         columnNumber: 5
     }, this);
 }
@@ -1051,13 +1314,28 @@ function VideoCard({ video }) {
     const [isLoadingContent, setIsLoadingContent] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     // Format header: replace underscores with spaces and capitalize words
     const formattedHeader = video.header.replace(/_/g, ' ').replace(/\b\w/g, (l)=>l.toUpperCase());
-    // Extract chunkDir from videoPath (e.g., /api/video/chunk_01_deepseekmoe_overview)
-    const chunkDir = video.videoPath.replace('/api/video/', '');
+    // Determine video type
+    const isFaqVideo = video.videoPath === '/api/faq-video';
+    const isGrpoVideo = video.videoPath.startsWith('/api/grpo-video/');
     const handleWatchClick = async ()=>{
         setIsModalOpen(true);
         setIsLoadingContent(true);
         try {
-            const response = await fetch(`/api/video-content/${chunkDir}`);
+            let apiEndpoint;
+            if (isFaqVideo) {
+                apiEndpoint = '/api/faq-content';
+            } else if (isGrpoVideo) {
+                // Extract chunk directory name from video path
+                // e.g., /api/grpo-video/chunk_01_introduction_to_grpo -> chunk_01_introduction_to_grpo
+                // or /api/grpo-video/chunk_08_training_and_evaluation_setup/reinforcement_learning/chunk_08_training_and_evaluation_setup -> chunk_08_training_and_evaluation_setup
+                const pathParts = video.videoPath.replace('/api/grpo-video/', '').split('/');
+                const chunkDir = video.chunkDir || pathParts[0] // Use stored chunkDir or extract from path
+                ;
+                apiEndpoint = `/api/grpo-content/${chunkDir}`;
+            } else {
+                apiEndpoint = `/api/video-content/${video.videoPath.replace('/api/video/', '')}`;
+            }
+            const response = await fetch(apiEndpoint);
             if (response.ok) {
                 const data = await response.json();
                 setFullContent(data.content || "");
@@ -1087,7 +1365,7 @@ function VideoCard({ video }) {
                                 onPause: ()=>setIsPlaying(false)
                             }, void 0, false, {
                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                lineNumber: 342,
+                                lineNumber: 501,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                 children: [
@@ -1097,12 +1375,12 @@ function VideoCard({ video }) {
                                             className: "h-8 w-8 text-muted-foreground"
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 351,
+                                            lineNumber: 510,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                        lineNumber: 350,
+                                        lineNumber: 509,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1110,14 +1388,14 @@ function VideoCard({ video }) {
                                         onClick: ()=>setIsPlaying(true)
                                     }, void 0, false, {
                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                        lineNumber: 353,
+                                        lineNumber: 512,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 340,
+                            lineNumber: 499,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1128,7 +1406,7 @@ function VideoCard({ video }) {
                                     children: formattedHeader
                                 }, void 0, false, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 361,
+                                    lineNumber: 520,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1136,7 +1414,7 @@ function VideoCard({ video }) {
                                     children: video.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 364,
+                                    lineNumber: 523,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1144,7 +1422,7 @@ function VideoCard({ video }) {
                                     children: video.description
                                 }, void 0, false, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 365,
+                                    lineNumber: 524,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -1157,31 +1435,31 @@ function VideoCard({ video }) {
                                             className: "h-3 w-3 mr-1"
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 372,
+                                            lineNumber: 531,
                                             columnNumber: 15
                                         }, this),
                                         "Watch"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 366,
+                                    lineNumber: 525,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 360,
+                            lineNumber: 519,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/paper-submission-page.tsx",
-                    lineNumber: 339,
+                    lineNumber: 498,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 338,
+                lineNumber: 497,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -1196,7 +1474,7 @@ function VideoCard({ video }) {
                                     children: video.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 382,
+                                    lineNumber: 541,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogDescription"], {
@@ -1204,13 +1482,13 @@ function VideoCard({ video }) {
                                     children: formattedHeader
                                 }, void 0, false, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 383,
+                                    lineNumber: 542,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 381,
+                            lineNumber: 540,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1225,12 +1503,12 @@ function VideoCard({ video }) {
                                         autoPlay: true
                                     }, void 0, false, {
                                         fileName: "[project]/components/paper-submission-page.tsx",
-                                        lineNumber: 390,
+                                        lineNumber: 549,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 389,
+                                    lineNumber: 548,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1241,7 +1519,7 @@ function VideoCard({ video }) {
                                             children: "Content"
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 400,
+                                            lineNumber: 559,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1252,46 +1530,46 @@ function VideoCard({ video }) {
                                                     className: "h-6 w-6 animate-spin text-muted-foreground"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                                    lineNumber: 404,
+                                                    lineNumber: 563,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                lineNumber: 403,
+                                                lineNumber: 562,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MarkdownContent, {
                                                 content: fullContent
                                             }, void 0, false, {
                                                 fileName: "[project]/components/paper-submission-page.tsx",
-                                                lineNumber: 407,
+                                                lineNumber: 566,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/paper-submission-page.tsx",
-                                            lineNumber: 401,
+                                            lineNumber: 560,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/paper-submission-page.tsx",
-                                    lineNumber: 399,
+                                    lineNumber: 558,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 387,
+                            lineNumber: 546,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/paper-submission-page.tsx",
-                    lineNumber: 380,
+                    lineNumber: 539,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 379,
+                lineNumber: 538,
                 columnNumber: 7
             }, this)
         ]
@@ -1303,7 +1581,7 @@ function MarkdownContent({ content }) {
         if (line.startsWith('```')) {
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, index, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 422,
+                lineNumber: 581,
                 columnNumber: 14
             }, this);
         }
@@ -1314,7 +1592,7 @@ function MarkdownContent({ content }) {
                 children: renderInlineMath(line.substring(2))
             }, index, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 427,
+                lineNumber: 586,
                 columnNumber: 14
             }, this);
         } else if (line.startsWith('## ')) {
@@ -1323,7 +1601,7 @@ function MarkdownContent({ content }) {
                 children: renderInlineMath(line.substring(3))
             }, index, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 429,
+                lineNumber: 588,
                 columnNumber: 14
             }, this);
         } else if (line.startsWith('### ')) {
@@ -1332,13 +1610,13 @@ function MarkdownContent({ content }) {
                 children: renderInlineMath(line.substring(4))
             }, index, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 431,
+                lineNumber: 590,
                 columnNumber: 14
             }, this);
         } else if (line.trim() === '') {
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, index, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 433,
+                lineNumber: 592,
                 columnNumber: 14
             }, this);
         }
@@ -1358,7 +1636,7 @@ function MarkdownContent({ content }) {
                         math: match[1]
                     }, `block-${match.index}`, false, {
                         fileName: "[project]/components/paper-submission-page.tsx",
-                        lineNumber: 449,
+                        lineNumber: 608,
                         columnNumber: 22
                     }, this));
                 } catch (e) {
@@ -1370,7 +1648,7 @@ function MarkdownContent({ content }) {
                         ]
                     }, `block-${match.index}`, true, {
                         fileName: "[project]/components/paper-submission-page.tsx",
-                        lineNumber: 451,
+                        lineNumber: 610,
                         columnNumber: 22
                     }, this));
                 }
@@ -1384,7 +1662,7 @@ function MarkdownContent({ content }) {
                 children: parts
             }, index, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 458,
+                lineNumber: 617,
                 columnNumber: 14
             }, this);
         }
@@ -1394,7 +1672,7 @@ function MarkdownContent({ content }) {
             children: renderInlineMath(line)
         }, index, false, {
             fileName: "[project]/components/paper-submission-page.tsx",
-            lineNumber: 463,
+            lineNumber: 622,
             columnNumber: 7
         }, this);
     };
@@ -1429,7 +1707,7 @@ function MarkdownContent({ content }) {
                             math: mathContent
                         }, `math-${dollarIndex}`, false, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 498,
+                            lineNumber: 657,
                             columnNumber: 24
                         }, this));
                     } catch (e) {
@@ -1441,7 +1719,7 @@ function MarkdownContent({ content }) {
                             ]
                         }, `math-${dollarIndex}`, true, {
                             fileName: "[project]/components/paper-submission-page.tsx",
-                            lineNumber: 500,
+                            lineNumber: 659,
                             columnNumber: 24
                         }, this));
                     }
@@ -1471,7 +1749,7 @@ function MarkdownContent({ content }) {
                 children: match[1]
             }, `bold-${match.index}`, false, {
                 fileName: "[project]/components/paper-submission-page.tsx",
-                lineNumber: 528,
+                lineNumber: 687,
                 columnNumber: 18
             }, this));
             lastIndex = match.index + match[0].length;
@@ -1490,12 +1768,12 @@ function MarkdownContent({ content }) {
             children: content.split('\n').map((line, index)=>renderLine(line, index))
         }, void 0, false, {
             fileName: "[project]/components/paper-submission-page.tsx",
-            lineNumber: 541,
+            lineNumber: 700,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/paper-submission-page.tsx",
-        lineNumber: 540,
+        lineNumber: 699,
         columnNumber: 5
     }, this);
 }

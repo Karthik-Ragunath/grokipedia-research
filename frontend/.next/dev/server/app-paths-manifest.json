@@ -1,4 +1,11 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/extract-pdf-title/route": "app/api/extract-pdf-title/route.js",
+  "/api/faq-content/route": "app/api/faq-content/route.js",
+  "/api/faq-video/route": "app/api/faq-video/route.js",
+  "/api/grpo-content/[chunkName]/route": "app/api/grpo-content/[chunkName]/route.js",
+  "/api/grpo-video/[...path]/route": "app/api/grpo-video/[...path]/route.js",
+  "/api/grpo-videos/route": "app/api/grpo-videos/route.js",
   "/api/video-content/[chunkDir]/route": "app/api/video-content/[chunkDir]/route.js",
   "/api/video/[chunkDir]/route": "app/api/video/[chunkDir]/route.js",
   "/api/videos/route": "app/api/videos/route.js",
