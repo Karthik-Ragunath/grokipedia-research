@@ -92,25 +92,58 @@ export function PaperSubmissionPage() {
     // Wait 2 seconds before loading content (with animation)
     await new Promise((resolve) => setTimeout(resolve, 2000))
     
+    // Check URL for 'deepseek' or 'grpo' to determine which videos to load
+    const urlLower = arxivUrl.toLowerCase()
+    const isGrpo = urlLower.includes('grpo')
+    const isDeepseek = urlLower.includes('deepseek')
+    
     // Load videos and FAQs after delay
     try {
-      // Load videos
-      const videosResponse = await fetch('/api/videos')
-      if (videosResponse.ok) {
-        const videosData = await videosResponse.json()
-        setVideos(videosData.videos || [])
+      if (isGrpo) {
+        // Load GRPO videos
+        const videosResponse = await fetch('/api/grpo-videos')
+        if (videosResponse.ok) {
+          const videosData = await videosResponse.json()
+          setVideos(videosData.videos || [])
+        }
+        // No FAQs for GRPO yet
+        setFaqs([])
+      } else if (isDeepseek) {
+        // Load DeepSeek videos (default behavior)
+        const videosResponse = await fetch('/api/videos')
+        if (videosResponse.ok) {
+          const videosData = await videosResponse.json()
+          setVideos(videosData.videos || [])
+        }
+        
+        // Load FAQ (single item)
+        const faqItem: VideoItem = {
+          id: 'faq_1',
+          title: 'DeepSeek MoE Transformer: Forward Pass and Context Mechanics',
+          description: 'Comprehensive exploration of DeepSeek\'s Mixture of Experts transformer implementation, focusing on forward pass architecture, context handling mechanisms, and mathematical foundations.',
+          videoPath: '/api/faq-video',
+          chunkNumber: 0,
+          header: 'faq_combined_video',
+        }
+        setFaqs([faqItem])
+      } else {
+        // Default to DeepSeek if no keyword detected
+        const videosResponse = await fetch('/api/videos')
+        if (videosResponse.ok) {
+          const videosData = await videosResponse.json()
+          setVideos(videosData.videos || [])
+        }
+        
+        const faqItem: VideoItem = {
+          id: 'faq_1',
+          title: 'DeepSeek MoE Transformer: Forward Pass and Context Mechanics',
+          description: 'Comprehensive exploration of DeepSeek\'s Mixture of Experts transformer implementation, focusing on forward pass architecture, context handling mechanisms, and mathematical foundations.',
+          videoPath: '/api/faq-video',
+          chunkNumber: 0,
+          header: 'faq_combined_video',
+        }
+        setFaqs([faqItem])
       }
-      
-      // Load FAQ (single item)
-      const faqItem: VideoItem = {
-        id: 'faq_1',
-        title: 'DeepSeek MoE Transformer: Forward Pass and Context Mechanics',
-        description: 'Comprehensive exploration of DeepSeek\'s Mixture of Experts transformer implementation, focusing on forward pass architecture, context handling mechanisms, and mathematical foundations.',
-        videoPath: '/api/faq-video',
-        chunkNumber: 0,
-        header: 'faq_combined_video',
-      }
-      setFaqs([faqItem])
     } catch (error) {
       console.error('Error loading videos:', error)
     } finally {
@@ -336,11 +369,20 @@ function VideoCard({ video }: { video: VideoItem }) {
     .replace(/_/g, ' ')
     .replace(/\b\w/g, (l) => l.toUpperCase())
   
-  // Determine if this is an FAQ video or regular video
+  // Determine video type
   const isFaqVideo = video.videoPath === '/api/faq-video'
+  const isGrpoVideo = video.videoPath.startsWith('/api/grpo-video/')
   
   const handleWatchClick = async () => {
     setIsModalOpen(true)
+    
+    // GRPO videos don't have markdown content yet
+    if (isGrpoVideo) {
+      setFullContent("Content not available for GRPO videos yet.")
+      setIsLoadingContent(false)
+      return
+    }
+    
     setIsLoadingContent(true)
     
     try {
