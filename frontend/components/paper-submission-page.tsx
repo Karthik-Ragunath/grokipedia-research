@@ -25,6 +25,7 @@ interface VideoItem {
   videoPath: string
   chunkNumber: number
   header: string
+  chunkDir?: string // Optional: for GRPO videos to match with markdown files
 }
 
 export function PaperSubmissionPage() {
@@ -92,10 +93,32 @@ export function PaperSubmissionPage() {
     // Wait 2 seconds before loading content (with animation)
     await new Promise((resolve) => setTimeout(resolve, 2000))
     
-    // Check URL for 'deepseek' or 'grpo' to determine which videos to load
-    const urlLower = arxivUrl.toLowerCase()
-    const isGrpo = urlLower.includes('grpo')
-    const isDeepseek = urlLower.includes('deepseek')
+    // Determine which videos to load
+    let isGrpo = false
+    let isDeepseek = false
+    
+    if (selectedFile) {
+      // Check filename for keywords (PDF parsing removed for now)
+      const fileName = (selectedFile.name || '').toLowerCase()
+      
+      if (fileName.includes('grpo')) {
+        isGrpo = true
+      } else if (fileName.includes('deepseek')) {
+        isDeepseek = true
+      }
+    } else if (arxivUrl.trim()) {
+      // Check URL for specific ArXiv IDs or keywords
+      const urlLower = arxivUrl.toLowerCase()
+      const urlTrimmed = arxivUrl.trim()
+      
+      // Check for specific ArXiv paper IDs
+      const isGrpoPaper = urlTrimmed.includes('2402.03300') || urlTrimmed === 'https://arxiv.org/pdf/2402.03300'
+      const isDeepseekPaper = urlTrimmed.includes('2401.06066') || urlTrimmed === 'https://arxiv.org/pdf/2401.06066'
+      
+      // Check for keywords (fallback)
+      isGrpo = isGrpoPaper || urlLower.includes('grpo')
+      isDeepseek = isDeepseekPaper || urlLower.includes('deepseek')
+    }
     
     // Load videos and FAQs after delay
     try {
@@ -375,19 +398,24 @@ function VideoCard({ video }: { video: VideoItem }) {
   
   const handleWatchClick = async () => {
     setIsModalOpen(true)
-    
-    // GRPO videos don't have markdown content yet
-    if (isGrpoVideo) {
-      setFullContent("Content not available for GRPO videos yet.")
-      setIsLoadingContent(false)
-      return
-    }
-    
     setIsLoadingContent(true)
     
     try {
-      // Use different API endpoint for FAQ vs regular videos
-      const apiEndpoint = isFaqVideo ? '/api/faq-content' : `/api/video-content/${video.videoPath.replace('/api/video/', '')}`
+      let apiEndpoint: string
+      
+      if (isFaqVideo) {
+        apiEndpoint = '/api/faq-content'
+      } else if (isGrpoVideo) {
+        // Extract chunk directory name from video path
+        // e.g., /api/grpo-video/chunk_01_introduction_to_grpo -> chunk_01_introduction_to_grpo
+        // or /api/grpo-video/chunk_08_training_and_evaluation_setup/reinforcement_learning/chunk_08_training_and_evaluation_setup -> chunk_08_training_and_evaluation_setup
+        const pathParts = video.videoPath.replace('/api/grpo-video/', '').split('/')
+        const chunkDir = video.chunkDir || pathParts[0] // Use stored chunkDir or extract from path
+        apiEndpoint = `/api/grpo-content/${chunkDir}`
+      } else {
+        apiEndpoint = `/api/video-content/${video.videoPath.replace('/api/video/', '')}`
+      }
+      
       const response = await fetch(apiEndpoint)
       if (response.ok) {
         const data = await response.json()

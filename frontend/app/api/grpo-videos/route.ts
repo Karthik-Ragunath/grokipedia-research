@@ -14,6 +14,7 @@ interface VideoItem {
   videoPath: string
   chunkNumber: number
   header: string
+  chunkDir?: string // Optional: for matching with markdown files
 }
 
 // Recursively find all video.mp4 files
@@ -85,6 +86,7 @@ export async function GET() {
         videoPath: `/api/grpo-video/${apiPath}`,
         chunkNumber,
         header: chunkName,
+        chunkDir: chunkDir, // Store chunk directory name for markdown lookup
       })
     }
     
