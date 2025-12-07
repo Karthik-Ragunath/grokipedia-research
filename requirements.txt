@@ -13,6 +13,9 @@ openai
 python-dotenv
 httpx
 
+# For Manim video generation
+manim
+
 # Flash Attention (optional, for better performance)
 # Install separately AFTER torch with:
 # pip install flash-attn --no-build-isolation

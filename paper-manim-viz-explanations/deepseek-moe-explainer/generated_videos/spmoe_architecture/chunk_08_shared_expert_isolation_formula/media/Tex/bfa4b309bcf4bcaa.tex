@@ -1,0 +1,9 @@
+\documentclass[preview]{standalone}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+\begin{align*}
+s_{i,t} &= \operatorname{Softmax}_i \left( {\mathbf{u}_{t}^{l}}^{T} \mathbf{e}_{i}^{l} \right) g_{i,t} &= \begin{cases} s_{i,t}, & s_{i,t} \in \operatorname{Topk}(...) \\ 0, & \text{otherwise} \end{cases}
+\end{align*}
+\end{document}
