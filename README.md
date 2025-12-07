@@ -1,6 +1,6 @@
 # Grokipedia For Research
 
-> *Democratizing cutting-edge AI research for the world—one animated explanation at a time.*
+> *Democratizing cutting-edge AI research for the world — one (actually many) animated explanation(s) at a time.*
 
 ---
 
