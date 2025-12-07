@@ -4,6 +4,24 @@
 
 ---
 
+## 🚀 Transform Any Research Paper Into Engaging Video Explanations
+
+**Now you can convert any research paper into beautiful, animated explainer videos—ready to publish on Grokipedia (Research).**
+
+Simply provide:
+1. 📄 A LaTeX paper
+2. 💻 The associated codebase
+
+And our pipeline automatically generates:
+- 🎥 **Animated Manim videos** for each concept
+- 📝 **Comprehensive summaries** with math, code, and intuition
+- ❓ **FAQ explainers** answering common questions
+- 🔗 **Theory-to-code mappings** showing how ideas become implementation
+
+**Just research in, education out.**
+
+---
+
 ## Why?
 
 ### 🌍 Research Belongs to Everyone
@@ -109,16 +127,20 @@ faq_summary_generator.py  →  comprehensive_summary.md
 
 ### 💡 See It In Action
 
-Our proof-of-concept: **DeepSeek MoE Explainer**
+We've built **two complete proof-of-concepts** demonstrating the full pipeline:
 
-From a single research paper + codebase, we generated:
+---
+
+#### 📘 **DeepSeek MoE Explainer**
+
+From the DeepSeek MoE research paper + codebase:
 - ✅ 12 semantic chunks with code alignment
 - ✅ 12 animated Manim videos explaining each concept
 - ✅ 12 comprehensive chunk summaries with math + code
 - ✅ 1 combined FAQ video (all 12 questions animated)
 - ✅ 1 comprehensive FAQ summary (34KB educational document)
 
-**Topics covered include:**
+**Topics covered:**
 - Mixture of Experts architecture
 - Fine-grained expert segmentation
 - Shared expert isolation
@@ -128,15 +150,50 @@ From a single research paper + codebase, we generated:
 
 ---
 
+#### 📗 **GRPO (Group Relative Policy Optimization) Explainer**
+
+From the DeepSeek Math paper + TRL library codebase:
+- ✅ 14 semantic chunks across 2 major sections
+- ✅ 14 animated Manim videos (9 RL + 5 SFT)
+- ✅ 14 comprehensive chunk summaries with math + code
+- ✅ Code aligned from `grpo_trainer.py`, `grpo_config.py`, and `sft_trainer.py`
+
+**Sections covered:**
+
+| Section | Chunks | Topics |
+|---------|--------|--------|
+| **Reinforcement Learning** | 9 | PPO → GRPO transition, algorithm design, outcome/process supervision, iterative RL, training setup |
+| **Supervised Fine-Tuning** | 5 | SFT data curation, training details, benchmark results, CoT & tool-integrated reasoning |
+
+**Key concepts explained:**
+- From PPO to GRPO: Why eliminate the value function?
+- Group-relative advantage estimation
+- Outcome vs. Process supervision
+- KL divergence regularization
+- Iterative reward model updates
+- Chain-of-thought reasoning performance
+
+---
+
+### 📊 Deliverables Summary
+
+| Paper | Chunks | Videos | Summaries | Code Files Aligned |
+|-------|--------|--------|-----------|-------------------|
+| **DeepSeek MoE** | 12 | 12 + 1 FAQ | 12 + 1 FAQ | `modeling_deepseek.py` |
+| **DeepSeek Math (GRPO)** | 14 | 14 | 14 | `grpo_trainer.py`, `grpo_config.py`, `sft_trainer.py`, `modelling_llama.py` |
+| **Total** | **26** | **27** | **27** | **5 files** |
+
+---
+
 ### 🎯 The Vision
 
-**Today:** Transform individual papers into educational content.
+**Grokipedia is a platform where anyone can:**
 
-**Tomorrow:** A platform where anyone can:
-- Upload papers and code to collections
-- Auto-generate educational video series
-- Contribute to a growing library of research explanations
-- Learn cutting-edge AI from first principles to implementation
+- 📤 **Upload papers and code** to create educational collections
+- 🎬 **Auto-generate video series** explaining complex research
+- 🌐 **Contribute to a growing library** of research explanations
+- 🎓 **Learn cutting-edge AI** from first principles to implementation
+- 🔗 **Bridge theory and code** with aligned, animated walkthroughs
 
 **Post to Grokipedia. Democratize knowledge. Change the world.**
 
@@ -145,3 +202,44 @@ From a single research paper + codebase, we generated:
 ## Architecture
 
 ![Grokipedia Research Architecture](Grokipedia-Research.drawio.png)
+
+---
+
+## Sample Project Structure
+
+```
+grokipedia-research/
+├── paper-manim-viz-explanations/
+│   ├── ai/                           # Core pipeline scripts
+│   │   ├── latex_section_extractor.py
+│   │   ├── semantic_chunker.py
+│   │   ├── aligner/
+│   │   │   └── code_chunk_aligner.py
+│   │   ├── manim_video_generator/
+│   │   │   └── chunk_video_generator.py
+│   │   ├── manim_video_generator_faqs/
+│   │   │   └── faq_video_generator.py
+│   │   └── summary_generator/
+│   │       ├── chunk_summary_generator.py
+│   │       └── faq_summary_generator.py
+│   │
+│   ├── deepseek-moe-explainer/       # MoE Paper Outputs
+│   │   ├── extracted_sections/
+│   │   ├── chunks/
+│   │   ├── chunks-with-code/
+│   │   ├── generated_videos/
+│   │   ├── chunk-summary/
+│   │   └── faq-summary/
+│   │
+│   └── grpo-explainer/               # GRPO Paper Outputs
+│       ├── grpo-paper/               # LaTeX source
+│       ├── grpo-code/                # TRL library code
+│       ├── extracted_sections/
+│       ├── chunks/
+│       ├── chunks-with-code/
+│       ├── generated_videos/
+│       └── chunk-summary/
+│
+├── requirements.txt
+└── README.md
+```
