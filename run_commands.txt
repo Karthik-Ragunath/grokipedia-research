@@ -90,3 +90,7 @@ export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH" && eval 
 
 # generate summary
 export PYENV_ROOT="$HOME/.pyenv" && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && pyenv activate deepseek-moe && cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai/summary_generator && python faq_summary_generator.py --faq-file ../../deepseek-moe-explainer/deepseek-moe-faqs/cursor_deepseek_model_forward_pass_in_h.md --output-dir ../../deepseek-moe-explainer/faq-summary
+
+# GRPO
+
+cp /home/ubuntu/.pyenv/versions/deepseek-moe/lib/python3.12/site-packages/trl/trainer/grpo_trainer.py /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/grpo-explainer/grpo-code/ && cp /home/ubuntu/.pyenv/versions/deepseek-moe/lib/python3.12/site-packages/trl/trainer/grpo_config.py /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/grpo-explainer/grpo-code/ && cp /home/ubuntu/.pyenv/versions/deepseek-moe/lib/python3.12/site-packages/trl/scripts/grpo.py /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/grpo-explainer/grpo-code/grpo_script.py && echo "Files copied successfully"

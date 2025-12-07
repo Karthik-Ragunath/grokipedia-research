@@ -3,6 +3,7 @@
 
 # Then install these packages:
 transformers==4.36.2
+tokenizers==0.15.2
 accelerate>=0.20.0
 sentencepiece
 protobuf
@@ -15,6 +16,10 @@ httpx
 
 # For Manim video generation
 manim
+
+# For GRPO and RL training (Note: trl requires newer transformers, install separately if needed)
+trl>=0.25.0
+datasets>=3.0.0
 
 # Flash Attention (optional, for better performance)
 # Install separately AFTER torch with:
