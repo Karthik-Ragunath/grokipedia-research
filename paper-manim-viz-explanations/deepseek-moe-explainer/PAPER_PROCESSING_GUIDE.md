@@ -95,12 +95,12 @@ chunks/
 Map each paper chunk to relevant code sections from the DeepSeek implementation.
 
 ```bash
-cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/deepseek-moe-explainer/aligner
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai/aligner
 
 python code_chunk_aligner.py \
-    --chunks-dir ../chunks \
-    --code-dir ../deepseek-code \
-    --output-dir ../chunks-with-code
+    --chunks-dir ../../deepseek-moe-explainer/chunks \
+    --code-dir ../../deepseek-moe-explainer/deepseek-code \
+    --output-dir ../../deepseek-moe-explainer/chunks-with-code
 ```
 
 **Output:**
@@ -142,11 +142,11 @@ python semantic_chunker.py \
     --output-dir ../deepseek-moe-explainer/chunks
 
 # Step 3: Align with code
-cd ../deepseek-moe-explainer/aligner
+cd aligner
 python code_chunk_aligner.py \
-    --chunks-dir ../chunks \
-    --code-dir ../deepseek-code \
-    --output-dir ../chunks-with-code
+    --chunks-dir ../../deepseek-moe-explainer/chunks \
+    --code-dir ../../deepseek-moe-explainer/deepseek-code \
+    --output-dir ../../deepseek-moe-explainer/chunks-with-code
 ```
 
 ---
@@ -164,11 +164,11 @@ python paper_chunking_pipeline.py \
     --output-dir ../deepseek-moe-explainer
 
 # Then run aligner separately
-cd ../deepseek-moe-explainer/aligner
+cd aligner
 python code_chunk_aligner.py \
-    --chunks-dir ../chunks \
-    --code-dir ../deepseek-code \
-    --output-dir ../chunks-with-code
+    --chunks-dir ../../deepseek-moe-explainer/chunks \
+    --code-dir ../../deepseek-moe-explainer/deepseek-code \
+    --output-dir ../../deepseek-moe-explainer/chunks-with-code
 ```
 
 ---
@@ -178,28 +178,32 @@ python code_chunk_aligner.py \
 After running all steps, your directory should look like:
 
 ```
-deepseek-moe-explainer/
-├── aligner/
-│   ├── code_chunk_aligner.py     # Aligns chunks with code
+paper-manim-viz-explanations/
+├── ai/                            # All processing scripts
+│   ├── aligner/
+│   │   ├── code_chunk_aligner.py  # Aligns chunks with code
+│   │   └── README.md
+│   ├── latex_section_extractor.py
+│   ├── semantic_chunker.py
+│   ├── paper_chunking_pipeline.py
 │   └── README.md
-├── chunks/                        # Semantic chunks (paper only)
-│   ├── introduction/
-│   ├── preliminaries.../
-│   └── spmoe_architecture/
-├── chunks-with-code/              # Chunks aligned with code
-│   ├── introduction/
-│   ├── preliminaries.../
-│   └── spmoe_architecture/
-├── deepseek-code/                 # Source code files
-│   ├── modeling_deepseek.py
-│   └── configuration_deepseek.py
-├── deepseek-moe-paper/            # Original LaTeX paper
-│   └── main.tex
-├── extracted_sections/            # Raw extracted sections
-│   ├── introduction.md
-│   ├── preliminaries_mixture-of-experts_for_transformers.md
-│   └── spmoe_architecture.md
-└── PAPER_PROCESSING_GUIDE.md      # This file
+└── deepseek-moe-explainer/
+    ├── chunks/                    # Semantic chunks (paper only)
+    │   ├── introduction/
+    │   ├── preliminaries.../
+    │   └── spmoe_architecture/
+    ├── chunks-with-code/          # Chunks aligned with code
+    │   ├── introduction/
+    │   ├── preliminaries.../
+    │   └── spmoe_architecture/
+    ├── deepseek-code/             # Source code files
+    │   ├── modeling_deepseek.py
+    │   └── configuration_deepseek.py
+    ├── deepseek-moe-paper/        # Original LaTeX paper
+    │   └── main.tex
+    ├── extracted_sections/        # Raw extracted sections
+    │   └── ...
+    └── PAPER_PROCESSING_GUIDE.md  # This file
 ```
 
 ---
@@ -264,7 +268,7 @@ Check exact section names in the LaTeX file. The extractor handles `\spmoe{}` co
 | `latex_section_extractor.py` | `ai/` | Extract sections from LaTeX |
 | `semantic_chunker.py` | `ai/` | Split sections into chunks |
 | `paper_chunking_pipeline.py` | `ai/` | Combined extract + chunk |
-| `code_chunk_aligner.py` | `aligner/` | Align chunks with code |
+| `code_chunk_aligner.py` | `ai/aligner/` | Align chunks with code |
 
 ---
 

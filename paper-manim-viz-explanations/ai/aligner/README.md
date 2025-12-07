@@ -17,13 +17,13 @@ And creates **aligned chunks** that include both the paper concept and the relev
 pyenv activate deepseek-moe
 
 # Navigate to aligner directory
-cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/deepseek-moe-explainer/aligner
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai/aligner
 
 # Run alignment
 python code_chunk_aligner.py \
-    --chunks-dir ../chunks \
-    --code-dir ../deepseek-code \
-    --output-dir ../chunks-with-code
+    --chunks-dir ../../deepseek-moe-explainer/chunks \
+    --code-dir ../../deepseek-moe-explainer/deepseek-code \
+    --output-dir ../../deepseek-moe-explainer/chunks-with-code
 ```
 
 ## Arguments

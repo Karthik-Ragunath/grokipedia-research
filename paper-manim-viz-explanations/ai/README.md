@@ -177,3 +177,22 @@ Warning: Section 'XYZ' not found
 ```
 → Check exact section name in LaTeX file. The extractor handles `\spmoe{}` and similar commands.
 
+---
+
+## Code-Chunk Aligner
+
+The `aligner/` subdirectory contains a script to align paper chunks with code implementations.
+
+### Usage
+
+```bash
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai/aligner
+
+python code_chunk_aligner.py \
+    --chunks-dir ../../deepseek-moe-explainer/chunks \
+    --code-dir ../../deepseek-moe-explainer/deepseek-code \
+    --output-dir ../../deepseek-moe-explainer/chunks-with-code
+```
+
+See `aligner/README.md` for detailed documentation.
+

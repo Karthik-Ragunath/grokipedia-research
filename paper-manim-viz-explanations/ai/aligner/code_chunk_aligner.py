@@ -6,9 +6,9 @@ relevant code sections for each chunk, creating aligned chunks-with-code.
 
 Usage:
     python code_chunk_aligner.py \\
-        --chunks-dir ../chunks \\
-        --code-dir ../deepseek-code \\
-        --output-dir ../chunks-with-code
+        --chunks-dir ../../deepseek-moe-explainer/chunks \\
+        --code-dir ../../deepseek-moe-explainer/deepseek-code \\
+        --output-dir ../../deepseek-moe-explainer/chunks-with-code
 """
 
 import asyncio
@@ -23,7 +23,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 # Load .env from project root
-env_path = Path(__file__).parent.parent.parent.parent / ".env"
+env_path = Path(__file__).parent.parent.parent / ".env"
 load_dotenv(env_path)
 
 
