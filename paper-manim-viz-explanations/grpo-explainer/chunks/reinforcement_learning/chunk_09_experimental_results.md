@@ -1,0 +1,5 @@
+# Experimental Results
+
+Table (ref: tab:sft_rl_math) demonstrates the performance of open- and closed-source models with both chain-of-thought and tool-integrated reasoning on English and Chinese benchmarks. We find that:
+1) \spmath-RL 7B attains accuracies of 88.2% and 51.7% on GSM8K and MATH, respectively, utilizing chain-of-thought reasoning. This performance surpasses that of all open-source models in the 7B to 70B range, as well as the majority of closed-source models. 
+2) Crucially, \spmath-RL 7B is only trained on chain-of-thought-format instruction tuning data of GSM8K and MATH, starting from \spmath-Instruct 7B. Despite the constrained scope of its training data, it outperforms \spmath-Instruct 7B across all evaluation metrics, showcasing the effectiveness of reinforcement learning.

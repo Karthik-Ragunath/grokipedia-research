@@ -1,0 +1,7 @@
+# Process Supervision with GRPO
+
+### Process Supervision RL with GRPO
+ 
+Outcome supervision only provides a reward at the end of each output, which may not be sufficient and efficient to supervise the policy in complex mathematical tasks. Following [wang2023math], we also explore process supervision, which provides a reward at the end of each reasoning step. Formally, given the question $q$ and $G$  sampled outputs $\{o_1, o_2, \cdots, o_G\}$, a process reward model is used to score each step of the outputs, yielding corresponding rewards: $\mathbf{R} = \{ \{r_1^{index(1)},\cdots,r_1^{index(K_1)}\}, \cdots,  \{r_G^{index(1)},\cdots,r_G^{index(K_G)}\} \}$, where $index(j)$ is the end token index of the $j$-th step, and $K_i$ is the total number of steps in the $i$-th output. We also normalize these rewards with the average and the standard deviation, i.e., $\widetilde{r}_i^{index(j)} = \frac{r_i^{index(j)} - {\rm mean(\mathbf{R})}}{{\rm std(\mathbf{R})}}$.
+Subsequently, the process supervision calculates the advantage of each token as the sum of the normalized rewards from the following steps, i.e., $\hat{A}_{i, t} = \sum_{index(j) \ge t} \widetilde{r}_i^{index(j)}$,
+and then optimizes the policy by maximizing the objective defined in equation ((ref: eq:GRPO-obj)).
