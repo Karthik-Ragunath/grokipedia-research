@@ -196,3 +196,27 @@ python code_chunk_aligner.py \
 
 See `aligner/README.md` for detailed documentation.
 
+---
+
+## Manim Video Generator
+
+The `manim_video_generator/` subdirectory contains a script to generate educational Manim videos from aligned chunks.
+
+### Usage
+
+```bash
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai/manim_video_generator
+
+# Process all chunks
+python chunk_video_generator.py \
+    --chunks-dir ../../deepseek-moe-explainer/chunks-with-code \
+    --output-dir ../../deepseek-moe-explainer/generated_videos
+
+# Process a single chunk
+python chunk_video_generator.py \
+    --chunk-file ../../deepseek-moe-explainer/chunks-with-code/spmoe_architecture/chunk_06_shared_expert_isolation_motivation.md \
+    --output-dir ../../deepseek-moe-explainer/generated_videos \
+    --max-retries 5
+```
+
+See `manim_video_generator/README.md` for detailed documentation.

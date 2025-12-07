@@ -4,10 +4,11 @@ A complete guide for processing the DeepSeek-MoE paper into semantic chunks and 
 
 ## Overview
 
-This guide covers three main steps:
+This guide covers four main steps:
 1. **Extract sections** from the LaTeX paper
 2. **Split into semantic chunks** using LLM
 3. **Align chunks with code** implementations
+4. **Generate educational videos** using Manim
 
 ## Prerequisites
 
@@ -124,9 +125,47 @@ Each chunk now contains:
 
 ---
 
+## Step 4: Generate Educational Videos
+
+Generate Manim animations explaining each concept.
+
+```bash
+cd /home/ubuntu/github/grokipedia-research/paper-manim-viz-explanations/ai/manim_video_generator
+
+# Process all chunks
+python chunk_video_generator.py \
+    --chunks-dir ../../deepseek-moe-explainer/chunks-with-code \
+    --output-dir ../../deepseek-moe-explainer/generated_videos
+
+# Or process a single chunk
+python chunk_video_generator.py \
+    --chunk-file ../../deepseek-moe-explainer/chunks-with-code/spmoe_architecture/chunk_06_shared_expert_isolation_motivation.md \
+    --output-dir ../../deepseek-moe-explainer/generated_videos \
+    --max-retries 5
+```
+
+**Options:**
+- `--max-retries, -r` - Retry attempts if video generation fails (default: 3)
+- `--quality, -q` - Video quality: `l`=480p, `m`=720p, `h`=1080p (default: l)
+- `--limit, -l` - Limit number of chunks to process
+
+**Output:**
+```
+generated_videos/
+├── manim_code/                 # Generated Python files
+│   └── chunk_xxx.py
+└── videos/                     # Generated MP4 videos
+    └── videos/
+        └── chunk_xxx/
+            └── 480p15/
+                └── ConceptScene.mp4
+```
+
+---
+
 ## Quick Start: Run All Steps
 
-Run all three steps in sequence:
+Run all four steps in sequence:
 
 ```bash
 # Step 1: Extract sections
@@ -147,6 +186,13 @@ python code_chunk_aligner.py \
     --chunks-dir ../../deepseek-moe-explainer/chunks \
     --code-dir ../../deepseek-moe-explainer/deepseek-code \
     --output-dir ../../deepseek-moe-explainer/chunks-with-code
+
+# Step 4: Generate videos
+cd ../manim_video_generator
+python chunk_video_generator.py \
+    --chunks-dir ../../deepseek-moe-explainer/chunks-with-code \
+    --output-dir ../../deepseek-moe-explainer/generated_videos \
+    --max-retries 3
 ```
 
 ---
@@ -181,7 +227,10 @@ After running all steps, your directory should look like:
 paper-manim-viz-explanations/
 ├── ai/                            # All processing scripts
 │   ├── aligner/
-│   │   ├── code_chunk_aligner.py  # Aligns chunks with code
+│   │   ├── code_chunk_aligner.py
+│   │   └── README.md
+│   ├── manim_video_generator/
+│   │   ├── chunk_video_generator.py
 │   │   └── README.md
 │   ├── latex_section_extractor.py
 │   ├── semantic_chunker.py
@@ -203,6 +252,9 @@ paper-manim-viz-explanations/
     │   └── main.tex
     ├── extracted_sections/        # Raw extracted sections
     │   └── ...
+    ├── generated_videos/          # Manim generated videos
+    │   ├── manim_code/            # Python source files
+    │   └── videos/                # MP4 video files
     └── PAPER_PROCESSING_GUIDE.md  # This file
 ```
 
@@ -269,6 +321,7 @@ Check exact section names in the LaTeX file. The extractor handles `\spmoe{}` co
 | `semantic_chunker.py` | `ai/` | Split sections into chunks |
 | `paper_chunking_pipeline.py` | `ai/` | Combined extract + chunk |
 | `code_chunk_aligner.py` | `ai/aligner/` | Align chunks with code |
+| `chunk_video_generator.py` | `ai/manim_video_generator/` | Generate Manim videos |
 
 ---
 
