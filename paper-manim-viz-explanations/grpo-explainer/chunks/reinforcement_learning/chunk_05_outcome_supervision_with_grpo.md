@@ -1,0 +1,5 @@
+# Outcome Supervision with GRPO
+
+### Outcome Supervision RL with GRPO
+ 
+Formally, for each question $q$,  a group of outputs $\{o_1, o_2, \cdots, o_G\}$  are sampled from the old policy model $\pi_{\theta_{old}}$. A reward model is then used to score the outputs, yielding $G$ rewards  $\mathbf{r}=\{r_1, r_2, \cdots, r_G\}$ correspondingly. Subsequently, these rewards are normalized by subtracting the group average and dividing by the group standard deviation. Outcome supervision provides the normalized reward at the end of each output $o_i$  and sets the advantages  $\hat{A}_{i, t}$  of all tokens in the output as the normalized reward, i.e., $\hat{A}_{i, t} = \widetilde{r}_i = \frac{r_i- {\rm mean}(\mathbf{r})}{{\rm std}(\mathbf{r})}$, and then optimizes the policy by maximizing the objective defined in equation ((ref: eq:GRPO-obj)).
